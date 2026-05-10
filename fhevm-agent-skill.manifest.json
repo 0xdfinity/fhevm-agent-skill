@@ -1,0 +1,68 @@
+{
+  "name": "fhevm-agent-skill",
+  "version": "1.0.0",
+  "description": "AI-native operating system for Zama FHEVM confidential app development.",
+  "entrypoint": "SKILL.md",
+  "agentAdapters": {
+    "codex": "AGENTS.md",
+    "claudeCodeSkill": "SKILL.md",
+    "claudeCodeMemory": "CLAUDE.md",
+    "cursor": ".cursor/rules/fhevm-agent-skill.mdc",
+    "windsurf": ".windsurf/rules/fhevm-agent-skill.md",
+    "cline": ".clinerules/fhevm-agent-skill.md",
+    "githubCopilot": ".github/copilot-instructions.md"
+  },
+  "validation": {
+    "smoke": "npm run agent:smoke",
+    "doctor": "npm run os:doctor",
+    "compile": "npm run compile",
+    "test": "npm test",
+    "fullDemoDeploy": "npm run deploy:demo"
+  },
+  "runtime": {
+    "cli": "scripts/fhevm-agent-os.mjs",
+    "commands": [
+      "doctor",
+      "list-recipes",
+      "install-adapters",
+      "scaffold"
+    ]
+  },
+  "deploymentAutomation": {
+    "envExample": ".env.example",
+    "localEnv": ".env",
+    "contractScript": "scripts/deploy-confidential-voting.ts",
+    "orchestrator": "scripts/deploy-full-demo.mjs",
+    "frontend": "frontend/confidential-voting-app",
+    "command": "npm run deploy:demo",
+    "requiredSecrets": [
+      "MNEMONIC",
+      "INFURA_API_KEY",
+      "VERCEL_TOKEN"
+    ]
+  },
+  "capabilities": [
+    "FHEVM architecture",
+    "Hardhat setup",
+    "encrypted types",
+    "FHE operations",
+    "ACL",
+    "input proofs",
+    "user decryption",
+    "public decryption",
+    "fhevmjs frontend integration",
+    "confidential contract testing",
+    "OpenZeppelin Confidential Contracts",
+    "ERC-7984",
+    "deployment",
+    "anti-pattern prevention"
+  ],
+  "examples": [
+    "examples/confidential-voting",
+    "examples/encrypted-erc7984",
+    "examples/confidential-payroll",
+    "examples/sealed-bid-auction",
+    "examples/confidential-dao",
+    "examples/confidential-marketplace"
+  ]
+}

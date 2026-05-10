@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FHEVM Confidential Voting</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Zama FHEVM Demo</p>
+          <h1>Confidential Voting</h1>
+          <p class="lede">
+            Submit encrypted votes, keep choices private, and reveal only final public tallies.
+          </p>
+        </div>
+        <div class="status-card">
+          <span class="status-label">Contract</span>
+          <code id="contractAddress">Not deployed</code>
+          <span class="status-label">Wallet</span>
+          <code id="walletAddress">Disconnected</code>
+        </div>
+      </section>
+
+      <section class="toolbar">
+        <button id="connectWallet">Connect Wallet</button>
+        <button id="switchNetwork" class="secondary">Switch To Sepolia</button>
+        <button id="refreshTallies" class="secondary">Refresh Handles</button>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>Cast Encrypted Vote</h2>
+          <label for="candidateChoice">Candidate</label>
+          <select id="candidateChoice"></select>
+          <button id="castVote">Encrypt And Vote</button>
+          <p class="hint">The selected choice is encrypted in your browser before the transaction is sent.</p>
+        </article>
+
+        <article class="panel">
+          <h2>Reveal Final Tallies</h2>
+          <button id="closeVoting">Owner: Close And Request Reveal</button>
+          <button id="decryptTallies" class="secondary">Public Decrypt Tallies</button>
+          <p class="hint">Only use public decryption after the owner closes voting.</p>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>Results</h2>
+        <div id="results" class="results"></div>
+      </section>
+
+      <section class="log-panel">
+        <h2>Runtime Log</h2>
+        <pre id="runtimeLog"></pre>
+      </section>
+    </main>
+
+    <script
+      src="https://cdn.zama.org/relayer-sdk-js/0.4.1/relayer-sdk-js.umd.cjs"
+      type="text/javascript"
+    ></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
