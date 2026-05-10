@@ -2,7 +2,7 @@
 
 Reusable AI skill package for Zama FHEVM confidential app development.
 
-This repository contains agent instructions, adapters, examples, templates, and validation checks for coding agents such as Claude Code, Cursor, Windsurf, Cline, Copilot-style agents, Codex, and custom AI developer tools. It is meant to be imported into another project so an agent can build that project's own FHEVM dApp from a natural-language prompt.
+This repository contains agent instructions, adapters, examples, templates, and validation checks for coding agents such as Claude Code, Cursor, Windsurf, Cline, Copilot-style agents, Codex, and custom AI developer tools
 
 ## What This Is
 
