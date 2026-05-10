@@ -24,11 +24,6 @@ const requiredFiles = [
   ".github/copilot-instructions.md",
   ".env.example",
   "scripts/deploy-confidential-voting.ts",
-  "scripts/deploy-full-demo.mjs",
-  "scripts/deploy-voting-frontend.mjs",
-  "frontend/confidential-voting-app/index.html",
-  "frontend/confidential-voting-app/app.js",
-  "frontend/confidential-voting-app/deployment.json",
 ];
 
 const exampleDirs = [
@@ -74,18 +69,6 @@ const skill = fs.readFileSync(path.join(root, "SKILL.md"), "utf8");
 if (!skill.startsWith("---\n")) failures.push("SKILL.md must start with YAML frontmatter");
 if (!/^name:\s*fhevm-agent-skill/m.test(skill)) failures.push("SKILL.md frontmatter must include name");
 if (!/^description:\s+/m.test(skill)) failures.push("SKILL.md frontmatter must include description");
-
-const staticVotingIndex = fs.readFileSync(path.join(root, "frontend/confidential-voting-app/index.html"), "utf8");
-const staticVotingApp = fs.readFileSync(path.join(root, "frontend/confidential-voting-app/app.js"), "utf8");
-if (!staticVotingIndex.includes("relayer-sdk-js/0.4.1/relayer-sdk-js.umd.cjs")) {
-  failures.push("confidential voting frontend must load the Zama Relayer SDK browser bundle");
-}
-if (staticVotingApp.includes('from "https://cdn.zama.org/relayer-sdk-js')) {
-  failures.push("confidential voting frontend must not named-import the Zama UMD/CJS browser bundle");
-}
-if (!staticVotingApp.includes("globalThis.relayerSDK")) {
-  failures.push("confidential voting frontend must read the Zama SDK from globalThis.relayerSDK");
-}
 
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "fhevm-agent-skill.manifest.json"), "utf8"));
 for (const adapter of Object.values(manifest.agentAdapters)) {

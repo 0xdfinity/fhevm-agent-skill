@@ -44,7 +44,18 @@ const recipes = {
   },
 };
 
-const excludedPayloadDirs = new Set(["node_modules", "artifacts", "cache", "types", "fhevmTemp", ".git"]);
+const excludedPayloadDirs = new Set([
+  ".env",
+  ".env.local",
+  ".vercel",
+  "deployments",
+  "node_modules",
+  "artifacts",
+  "cache",
+  "types",
+  "fhevmTemp",
+  ".git",
+]);
 
 function rel(...parts) {
   return path.join(root, ...parts);
@@ -77,6 +88,7 @@ function copyTree(source, destination, options = {}) {
   ensureDir(destination);
   for (const entry of fs.readdirSync(source, { withFileTypes: true })) {
     if (options.exclude?.has(entry.name)) continue;
+    if (entry.name.startsWith(".env") && entry.name !== ".env.example") continue;
     const sourcePath = path.join(source, entry.name);
     const destinationPath = path.join(destination, entry.name);
     if (entry.isDirectory()) {
@@ -111,8 +123,6 @@ function doctor() {
     "fhevm-agent-skill.manifest.json",
     ".env.example",
     "scripts/deploy-confidential-voting.ts",
-    "scripts/deploy-full-demo.mjs",
-    "frontend/confidential-voting-app/index.html",
     ".cursor/rules/fhevm-agent-skill.mdc",
     ".windsurf/rules/fhevm-agent-skill.md",
     ".clinerules/fhevm-agent-skill.md",

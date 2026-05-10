@@ -24,8 +24,6 @@
     "os:recipes": "node scripts/fhevm-agent-os.mjs list-recipes",
     "os:scaffold": "node scripts/fhevm-agent-os.mjs scaffold",
     "deploy:contract:voting": "cross-env TS_NODE_TRANSPILE_ONLY=true hardhat run scripts/deploy-confidential-voting.ts --network sepolia",
-    "deploy:frontend:voting": "node scripts/deploy-voting-frontend.mjs",
-    "deploy:demo": "node scripts/deploy-full-demo.mjs",
     "clean": "rimraf artifacts cache types fhevmTemp"
   },
   "dependencies": {

@@ -1,7 +1,7 @@
 {
   "name": "fhevm-agent-skill",
   "version": "1.0.0",
-  "description": "AI-native operating system for Zama FHEVM confidential app development.",
+  "description": "Reusable AI skill system for Zama FHEVM confidential app development.",
   "entrypoint": "SKILL.md",
   "agentAdapters": {
     "codex": "AGENTS.md",
@@ -16,8 +16,7 @@
     "smoke": "npm run agent:smoke",
     "doctor": "npm run os:doctor",
     "compile": "npm run compile",
-    "test": "npm test",
-    "fullDemoDeploy": "npm run deploy:demo"
+    "test": "npm test"
   },
   "runtime": {
     "cli": "scripts/fhevm-agent-os.mjs",
@@ -28,18 +27,10 @@
       "scaffold"
     ]
   },
-  "deploymentAutomation": {
-    "envExample": ".env.example",
-    "localEnv": ".env",
-    "contractScript": "scripts/deploy-confidential-voting.ts",
-    "orchestrator": "scripts/deploy-full-demo.mjs",
-    "frontend": "frontend/confidential-voting-app",
-    "command": "npm run deploy:demo",
-    "requiredSecrets": [
-      "MNEMONIC",
-      "INFURA_API_KEY",
-      "VERCEL_TOKEN"
-    ]
+  "generationProtocol": {
+    "scaffoldCommand": "node scripts/fhevm-agent-os.mjs scaffold <recipe> <target>",
+    "adapterInstallCommand": "node scripts/fhevm-agent-os.mjs install-adapters <target>",
+    "targetProjectRule": "Generated dApps, deployment artifacts, and local secrets belong in the target project, not in this skill repository."
   },
   "capabilities": [
     "FHEVM architecture",

@@ -1,8 +1,8 @@
 # FHEVM Agent Skill
 
-The operating system for AI-native confidential app development on Zama FHEVM.
+Reusable AI skill package for Zama FHEVM confidential app development.
 
-This package is a production-ready skill system for coding agents such as Claude Code, Cursor, Windsurf, Cline, Copilot-style agents, and custom AI developer tools. It teaches agents how to design, implement, test, deploy, and integrate confidential smart contracts with Zama FHEVM while avoiding the failures that usually come from treating encrypted values like normal Solidity values.
+This repository contains agent instructions, adapters, examples, templates, and validation checks for coding agents such as Claude Code, Cursor, Windsurf, Cline, Copilot-style agents, Codex, and custom AI developer tools. It is meant to be imported into another project so an agent can build that project's own FHEVM dApp from a natural-language prompt.
 
 ## What This Is
 
@@ -35,13 +35,7 @@ npm run agent:smoke
 npm run os:doctor
 ```
 
-For the hosted demo lane, fill `.env` from `.env.example` with `MNEMONIC`, `INFURA_API_KEY`, and `VERCEL_TOKEN`. The agent can then run the full deployment lane internally:
-
-```bash
-npm run deploy:demo
-```
-
-This compiles, tests, deploys the confidential voting contract to Sepolia, writes frontend config, deploys the static frontend to Vercel, and prints the live URL. In normal use, the developer does not need to type this command; the coding agent runs it after a natural-language prompt such as "Build a confidential voting dApp and deploy it."
+This repository does not commit generated dApps. Use the skill in a target project, then prompt your coding agent to build, test, and deploy that project's app.
 
 ## Import Into Agents
 
@@ -97,24 +91,21 @@ Generated apps include:
 - bootloaders for Codex, Claude Code, Cursor, Windsurf, Cline, and Copilot
 - `FHEVM_AGENT_BOOT.md` with the correct prompt and validation workflow
 
-## Why This Is An Agent OS
+## Structure
 
-The structure is intentionally system-like:
+The package is organized so agents can load instructions, select patterns, generate code, and validate outputs:
 
-- Kernel: `SKILL.md`
-- Bootloaders: `AGENTS.md`, `CLAUDE.md`, Cursor/Windsurf/Cline/Copilot adapters
-- Drivers: `templates/`
-- Reference programs: `examples/`
-- Policy engine: `agent-rules.md` and `anti-patterns.md`
-- Scheduler/router: `prompt-recipes.md` and `decision-frameworks.md`
-- Health checks: `npm run compile`, `npm test`, `npm run agent:smoke`
-- Manifest: `fhevm-agent-skill.manifest.json`
-
-That is the difference between documentation and infrastructure: another agent can discover it, load it, follow it, generate code from it, and verify the result.
+- `SKILL.md`: primary agent instructions.
+- `AGENTS.md`, `CLAUDE.md`, Cursor/Windsurf/Cline/Copilot adapters: agent bootloaders.
+- `templates/`: reusable code templates.
+- `examples/`: reference app patterns.
+- `agent-rules.md` and `anti-patterns.md`: validation and failure-prevention rules.
+- `prompt-recipes.md` and `decision-frameworks.md`: prompt routing and architecture selection.
+- `scripts/`: packaging, scaffold, and adapter-install tooling.
 
 ## Project Map
 
-- `SKILL.md`: primary AI agent operating system.
+- `SKILL.md`: primary agent instruction file.
 - `agent-rules.md`: enforceable FHEVM development rules.
 - `architecture-patterns.md`: reusable confidential app architecture patterns.
 - `anti-patterns.md`: wrong/correct examples for common failures.
@@ -129,9 +120,7 @@ That is the difference between documentation and infrastructure: another agent c
 - `fhevm-agent-skill.manifest.json`: machine-readable adapter and capability map.
 - `scripts/install-agent-adapters.*`: installers for mounting the skill into other projects.
 - `scripts/agent-smoke-test.mjs`: structural validation for the agent packaging layer.
-- `scripts/deploy-full-demo.mjs`: one-command Sepolia + Vercel demo deployment.
-- `frontend/confidential-voting-app`: Vercel-ready confidential voting frontend.
-- `single-prompt-deployment.md`: exact end-to-end deployment protocol for agents.
+- `single-prompt-deployment.md`: generic end-to-end deployment protocol for agents working inside a target dApp.
 
 ## Included Examples
 
@@ -160,7 +149,3 @@ This skill is aligned with current Zama and OpenZeppelin references:
 - [OpenZeppelin ERC-7984 docs](https://docs.openzeppelin.com/confidential-contracts/token)
 - [fhevm-hardhat-template](https://github.com/zama-ai/fhevm-hardhat-template)
 - [fhevm-react-template](https://github.com/zama-ai/fhevm-react-template)
-
-## Positioning
-
-This project is ecosystem infrastructure for AI-powered confidential smart contract development. Its job is to make the agent slower to hallucinate, faster to validate, and much more likely to ship working FHEVM code.

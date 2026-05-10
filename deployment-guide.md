@@ -101,12 +101,13 @@ Also validate the frontend runtime itself:
 - Static CDN demos load the Zama UMD bundle through `<script src="...relayer-sdk-js.umd.cjs"></script>` and read `globalThis.relayerSDK`.
 - The Vercel deployment serves the latest `app.js`; do not trust a successful deploy if the buttons are inert.
 
-## Phase 6: One-Command Hosted Demo
+## Phase 6: Hosted Target DApp
 
-Use this lane when recording the bounty demo or when a user asks for "build, test, deploy contract, deploy frontend, and give me the URL."
+Use this lane inside the generated or target dApp project when recording a demo or when a user asks for "build, test, deploy contract, deploy frontend, and give me the URL."
 
-1. Copy `.env.example` to `.env`.
-2. Fill:
+1. Mount this skill into the target project or scaffold a target project with `scripts/fhevm-agent-os.mjs scaffold`.
+2. Copy the target project's `.env.example` to `.env`.
+3. Fill:
 
 ```bash
 MNEMONIC=
@@ -114,23 +115,11 @@ INFURA_API_KEY=
 VERCEL_TOKEN=
 ```
 
-3. Keep `DEPLOY_FRONTEND_PROD=false` for preview deployments.
-4. Run:
+4. Keep production deployment disabled until the preview is validated.
+5. Have the agent run the target project's compile, test, contract deploy, frontend build, frontend deploy, and browser validation steps.
+6. Return the contract address, frontend URL, and validation summary.
 
-```bash
-npm run deploy:demo
-```
-
-The command:
-
-- compiles contracts
-- runs the full FHEVM test suite
-- deploys `ConfidentialVoting` to Sepolia
-- writes `frontend/confidential-voting-app/deployment.json`
-- deploys the frontend through Vercel CLI using `VERCEL_TOKEN`
-- prints the contract address and frontend URL
-
-Do not commit `.env`, `.vercel`, or generated `deployments/` artifacts.
+Do not commit generated dApps, `.env`, `.vercel`, or generated `deployments/` artifacts into this skill repository.
 
 ## Deployment Anti-Mistakes
 

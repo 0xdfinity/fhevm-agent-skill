@@ -281,21 +281,18 @@ Natural-language full hosted demo lane:
 
 Trigger when the user asks for a complete FHEVM dApp, deployed app, live demo, Vercel link, "build end to end", or similar natural language. Do not ask the user to run commands unless secrets are missing. Run the workflow yourself with tools.
 
-1. Copy `.env.example` to `.env`.
-2. Confirm `.env` has `MNEMONIC`, `INFURA_API_KEY`, and `VERCEL_TOKEN`.
-3. Build or select the app recipe.
-4. Run compile and tests.
-5. Deploy the contract.
-6. Deploy the frontend to Vercel.
-7. Return the contract address, Vercel URL, and validation summary.
+1. Work in the user's target dApp repository or scaffold a new target project from `scripts/fhevm-agent-os.mjs scaffold`.
+2. Copy `.env.example` to that target project's `.env` when needed.
+3. Confirm the target `.env` has required deployment secrets, usually `MNEMONIC`, `INFURA_API_KEY`, and optionally `VERCEL_TOKEN`.
+4. Build or select the app recipe.
+5. Generate the target contract, tests, deploy script, frontend integration, and frontend app.
+6. Run compile and tests in the target project.
+7. Deploy the contract.
+8. Deploy the target frontend to Vercel or the user's chosen host.
+9. Validate the deployed frontend loads without module errors and that Connect Wallet produces a wallet prompt or a clear no-wallet message.
+10. Return the contract address, frontend URL, and validation summary.
 
-Internal command for the default voting demo:
-
-```bash
-npm run deploy:demo
-```
-
-Expect compile, tests, Sepolia contract deployment, frontend config generation, and Vercel deployment. Final output must include the deployed contract address and Vercel URL.
+Do not commit generated dApps, `.env`, `.vercel`, or deployment artifacts into this skill repository. Generated apps belong in the target project.
 
 Never print or commit the filled `.env`.
 

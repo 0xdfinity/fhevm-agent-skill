@@ -1,6 +1,6 @@
 # Single-Prompt Deployment
 
-This is the end-to-end automation lane for the video demo.
+This is the end-to-end automation protocol for agents using this skill inside a generated or target dApp project.
 
 ## Goal
 
@@ -10,15 +10,11 @@ A developer gives an AI agent one natural-language prompt:
 Use the FHEVM Agent Skill. Build, test, deploy the confidential voting contract to Sepolia, deploy the frontend to Vercel, and return the live URL.
 ```
 
-The agent should interpret that prompt as permission to execute the end-to-end workflow. The developer should not have to run commands manually. Internally, the agent runs:
-
-```bash
-npm run deploy:demo
-```
+The agent should interpret that prompt as permission to execute the end-to-end workflow in the target project. The developer should not have to run commands manually.
 
 ## Required Local Secrets
 
-Copy `.env.example` to `.env`, then fill:
+Copy the target project's `.env.example` to `.env`, then fill:
 
 ```bash
 MNEMONIC=
@@ -34,16 +30,17 @@ CONFIDENTIAL_VOTING_CANDIDATE_COUNT=3
 DEPLOY_FRONTEND_PROD=false
 ```
 
-## What The Command Does
+## What The Agent Does
 
-1. Runs `npm run compile`.
-2. Runs `npm test`.
-3. Deploys `ConfidentialVoting` to Sepolia.
-4. Generates `deployments/sepolia/confidential-voting.json`.
-5. Generates `frontend/confidential-voting-app/deployment.json`.
-6. Deploys `frontend/confidential-voting-app` to Vercel.
-7. Loads the deployed frontend and verifies the wallet/action buttons bind.
-8. Prints the contract address and Vercel URL.
+1. Creates or updates the target dApp project from the selected recipe.
+2. Generates contracts, tests, deploy scripts, frontend integration, and frontend app code.
+3. Runs compile checks.
+4. Runs confidential workflow tests.
+5. Deploys the contract to Sepolia.
+6. Writes deployment metadata inside the target project only.
+7. Deploys the target frontend to Vercel or the requested host.
+8. Loads the deployed frontend and verifies wallet/action buttons bind.
+9. Returns the contract address, frontend URL, and validation summary.
 
 ## Expected Final Agent Output
 
@@ -63,6 +60,7 @@ Validation:
 
 ## Safety Rules
 
+- Generated dApps belong in the user's target project, not in this skill repository.
 - Never commit `.env`.
 - Never expose `MNEMONIC`, `INFURA_API_KEY`, or `VERCEL_TOKEN` in logs.
 - Never prefix secrets with `NEXT_PUBLIC_`.
