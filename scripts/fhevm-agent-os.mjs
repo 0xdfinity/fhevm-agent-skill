@@ -8,37 +8,37 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const recipes = {
   "confidential-voting": {
     title: "Confidential Voting",
-    source: "examples/confidential-voting",
+    source: "assets/examples/confidential-voting",
     prompt: "Build a confidential voting dApp",
     contract: "ConfidentialVoting",
   },
   "encrypted-erc7984": {
     title: "ERC-7984 Confidential Token",
-    source: "examples/encrypted-erc7984",
+    source: "assets/examples/encrypted-erc7984",
     prompt: "Build an ERC-7984 confidential token",
     contract: "ConfidentialToken",
   },
   "confidential-payroll": {
     title: "Confidential Payroll",
-    source: "examples/confidential-payroll",
+    source: "assets/examples/confidential-payroll",
     prompt: "Build confidential payroll",
     contract: "ConfidentialPayroll",
   },
   "sealed-bid-auction": {
     title: "Sealed-Bid Auction",
-    source: "examples/sealed-bid-auction",
+    source: "assets/examples/sealed-bid-auction",
     prompt: "Build a sealed-bid auction",
     contract: "SealedBidAuction",
   },
   "confidential-dao": {
     title: "Confidential DAO Voting",
-    source: "examples/confidential-dao",
+    source: "assets/examples/confidential-dao",
     prompt: "Build private DAO voting",
     contract: "ConfidentialDAO",
   },
   "confidential-marketplace": {
     title: "Confidential Marketplace",
-    source: "examples/confidential-marketplace",
+    source: "assets/examples/confidential-marketplace",
     prompt: "Build a confidential marketplace",
     contract: "ConfidentialMarketplace",
   },
@@ -114,13 +114,20 @@ function writeFile(targetRoot, relativePath, content, force = false) {
 
 function doctor() {
   const required = [
-    "SKILL.md",
+    "skills/use-fhevm/SKILL.md",
+    "skills/build-fhevm-contracts/SKILL.md",
+    "skills/integrate-fhevm-frontend/SKILL.md",
+    "skills/test-fhevm-contracts/SKILL.md",
+    "skills/deploy-fhevm-dapp/SKILL.md",
+    "skills/use-erc7984/SKILL.md",
+    "skills/scaffold-fhevm-dapp/SKILL.md",
     "AGENTS.md",
     "CLAUDE.md",
-    "agent-rules.md",
-    "anti-patterns.md",
-    "decision-frameworks.md",
     "fhevm-agent-skill.manifest.json",
+    ".codex-plugin/plugin.json",
+    ".claude-plugin/plugin.json",
+    ".cursor-plugin/plugin.json",
+    ".mcp.json",
     ".env.example",
     "scripts/deploy-confidential-voting.ts",
     ".cursor/rules/fhevm-agent-skill.mdc",
@@ -134,7 +141,7 @@ function doctor() {
     if (!exists(file)) failures.push(`missing ${file}`);
   }
   for (const [recipe, info] of Object.entries(recipes)) {
-    for (const child of ["README.md", "contracts", "test", "deploy", "frontend"]) {
+    for (const child of ["contracts", "test", "deploy", "frontend"]) {
       if (!exists(path.join(info.source, child))) failures.push(`missing ${recipe}/${child}`);
     }
   }
@@ -147,7 +154,7 @@ function doctor() {
 
   console.log("FHEVM Agent OS doctor passed.");
   console.log(`Recipes: ${Object.keys(recipes).length}`);
-  console.log("Adapters: AGENTS.md, CLAUDE.md, Cursor, Windsurf, Cline, Copilot, SKILL.md");
+  console.log("Adapters: AGENTS.md, CLAUDE.md, Cursor, Windsurf, Cline, Copilot, plugin metadata");
 }
 
 function listRecipes() {
@@ -172,7 +179,7 @@ function installAdapters(targetRoot, force = false) {
 
 Use the installed FHEVM Agent Skill for any Zama FHEVM confidential app work.
 
-Read \`.agent-skills/fhevm-agent-skill/SKILL.md\` before coding. Apply \`agent-rules.md\`, \`decision-frameworks.md\`, and \`anti-patterns.md\`.
+Read \`.agent-skills/fhevm-agent-skill/skills/use-fhevm/SKILL.md\` before coding, then route to the relevant \`.agent-skills/fhevm-agent-skill/skills/*/SKILL.md\` file.
 `,
       force,
     ),
@@ -181,8 +188,7 @@ Read \`.agent-skills/fhevm-agent-skill/SKILL.md\` before coding. Apply \`agent-r
       "CLAUDE.md",
       `# Claude Code Memory
 
-Use @./.agent-skills/fhevm-agent-skill/SKILL.md for Zama FHEVM work.
-Use @./.agent-skills/fhevm-agent-skill/agent-rules.md and @./.agent-skills/fhevm-agent-skill/anti-patterns.md as guardrails.
+Use @./.agent-skills/fhevm-agent-skill/skills/use-fhevm/SKILL.md for Zama FHEVM work. Route to the relevant skill under @./.agent-skills/fhevm-agent-skill/skills/.
 `,
       force,
     ),
@@ -194,7 +200,7 @@ description: Use the installed FHEVM Agent Skill for Zama FHEVM confidential app
 alwaysApply: true
 ---
 
-Read \`.agent-skills/fhevm-agent-skill/SKILL.md\` before FHEVM work. Apply the rules and anti-pattern checks from the installed skill.
+Read \`.agent-skills/fhevm-agent-skill/skills/use-fhevm/SKILL.md\` before FHEVM work. Route to the relevant installed skill.
 `,
       force,
     ),
@@ -206,7 +212,7 @@ trigger: model_decision
 description: Use for Zama FHEVM confidential app development, ERC-7984, fhevmjs, ACL, proofs, decryption, tests, and deployment.
 ---
 
-Read \`.agent-skills/fhevm-agent-skill/SKILL.md\` before FHEVM work. Apply the installed rules and anti-pattern checks.
+Read \`.agent-skills/fhevm-agent-skill/skills/use-fhevm/SKILL.md\` before FHEVM work. Route to the relevant installed skill.
 `,
       force,
     ),
@@ -215,7 +221,7 @@ Read \`.agent-skills/fhevm-agent-skill/SKILL.md\` before FHEVM work. Apply the i
       ".clinerules/fhevm-agent-skill.md",
       `# FHEVM Agent Skill
 
-For Zama FHEVM work, read \`.agent-skills/fhevm-agent-skill/SKILL.md\` before coding. Apply \`agent-rules.md\`, \`decision-frameworks.md\`, and \`anti-patterns.md\`.
+For Zama FHEVM work, read \`.agent-skills/fhevm-agent-skill/skills/use-fhevm/SKILL.md\`, then route to the relevant skill under \`.agent-skills/fhevm-agent-skill/skills/\`.
 `,
       force,
     ),
@@ -224,7 +230,7 @@ For Zama FHEVM work, read \`.agent-skills/fhevm-agent-skill/SKILL.md\` before co
       ".github/copilot-instructions.md",
       `# FHEVM Agent Skill
 
-For Zama FHEVM confidential app work, follow \`.agent-skills/fhevm-agent-skill/SKILL.md\`, \`agent-rules.md\`, \`decision-frameworks.md\`, and \`anti-patterns.md\`.
+For Zama FHEVM confidential app work, follow \`.agent-skills/fhevm-agent-skill/skills/use-fhevm/SKILL.md\` and the relevant skill under \`.agent-skills/fhevm-agent-skill/skills/\`.
 `,
       force,
     ),
@@ -318,7 +324,25 @@ export default config;
   copyTree(path.join(sourceRoot, "test"), path.join(targetRoot, "test"));
   copyTree(path.join(sourceRoot, "deploy"), path.join(targetRoot, "deploy"));
   copyTree(path.join(sourceRoot, "frontend"), path.join(targetRoot, "frontend"));
-  fs.copyFileSync(path.join(sourceRoot, "README.md"), path.join(targetRoot, "README.md"));
+  fs.writeFileSync(
+    path.join(targetRoot, "README.md"),
+    `# ${recipe.title}
+
+Generated from the FHEVM skills package.
+
+## Agent Boot
+
+Read \`.agent-skills/fhevm-agent-skill/skills/use-fhevm/SKILL.md\`, then route to the specific skill for contract, frontend, test, deployment, or ERC-7984 work.
+
+## Validate
+
+\`\`\`bash
+npm install
+npm run compile
+npm test
+\`\`\`
+`,
+  );
 
   installAdapters(targetRoot, true);
 
@@ -332,7 +356,7 @@ Primary contract: ${recipe.contract}
 
 Agent startup:
 
-1. Read \`.agent-skills/fhevm-agent-skill/SKILL.md\`.
+1. Read \`.agent-skills/fhevm-agent-skill/skills/use-fhevm/SKILL.md\`.
 2. Read this generated app's \`README.md\`.
 3. Compile with \`npm run compile\`.
 4. Test with \`npm test\`.

@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="160" viewBox="0 0 640 160" role="img" aria-label="FHEVM">
+  <rect width="640" height="160" rx="28" fill="#111827"/>
+  <path d="M72 48h64v16H90v24h38v16H90v40H72V48Zm96 0h18v40h48V48h18v96h-18v-40h-48v40h-18V48Zm128 0h68v16h-50v24h42v16h-42v24h52v16h-70V48Zm104 0h20l30 72 30-72h20l-41 96h-18l-41-96Zm132 0h24l28 68 28-68h24v96h-18V78l-27 66h-14l-27-66v66h-18V48Z" fill="#F9FAFB"/>
+</svg>

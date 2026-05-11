@@ -1,25 +1,7 @@
 ---
-description: Zama FHEVM confidential app engineering OS. Use for confidential smart contracts, ERC-7984, fhevmjs/frontend integration, encrypted tests, deployment, ACL, input proofs, user decryption, and public decryption.
+description: Zama FHEVM skills. Use for confidential Solidity contracts, encrypted frontend flows, tests, deployments, ERC-7984, input proofs, ACL, and decryption.
 alwaysApply: true
 ---
 
-# FHEVM Agent Skill
-
-Before FHEVM code generation:
-
-1. Read `SKILL.md`.
-2. Apply `agent-rules.md`.
-3. Check `anti-patterns.md`.
-4. Use `decision-frameworks.md` for pattern selection.
-5. Copy implementation structure from `templates/` or `examples/`.
-
-Mandatory validation:
-
-```bash
-npm run compile
-npm test
-npm run agent:smoke
-```
-
-Do not treat encrypted handles as plaintext. Do not omit ACL. Do not invent FHEVM APIs.
+Read `skills/use-fhevm/SKILL.md` before FHEVM work, then route to the specific `skills/*/SKILL.md` file. Use `assets/examples/` and `assets/templates/` as implementation resources.
 

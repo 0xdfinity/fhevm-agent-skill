@@ -1,0 +1,43 @@
+{
+  "name": "fhevm",
+  "version": "1.0.0",
+  "description": "Build confidential smart contracts and dApps with Zama FHEVM skills.",
+  "author": {
+    "name": "0xdfinity"
+  },
+  "homepage": "https://github.com/0xdfinity/fhevm-agent-skill",
+  "repository": "https://github.com/0xdfinity/fhevm-agent-skill",
+  "license": "MIT",
+  "keywords": [
+    "zama",
+    "fhevm",
+    "confidential",
+    "solidity",
+    "hardhat",
+    "erc7984",
+    "ai-agents"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "FHEVM",
+    "shortDescription": "Build Zama FHEVM dApps",
+    "longDescription": "Use FHEVM skills to build confidential Solidity contracts, tests, frontends, deployments, and ERC-7984 token flows.",
+    "developerName": "0xdfinity",
+    "category": "Engineering",
+    "capabilities": [
+      "Interactive",
+      "Read"
+    ],
+    "websiteURL": "https://docs.zama.org/protocol",
+    "defaultPrompt": [
+      "Build a confidential voting dApp",
+      "Create an ERC-7984 confidential token",
+      "Fix my FHEVM frontend wallet connection",
+      "Test and deploy my FHEVM dApp"
+    ],
+    "composerIcon": "./assets/logo-square.svg",
+    "logo": "./assets/logo-square.svg",
+    "screenshots": []
+  }
+}

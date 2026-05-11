@@ -1,16 +1,36 @@
 {
-  "name": "fhevm-agent-skill",
+  "name": "fhevm",
   "version": "1.0.0",
-  "description": "Reusable AI skill system for Zama FHEVM confidential app development.",
-  "entrypoint": "SKILL.md",
+  "description": "Plugin-style skills for Zama FHEVM confidential app development.",
+  "skillsDirectory": "skills",
+  "skills": [
+    "skills/use-fhevm",
+    "skills/build-fhevm-contracts",
+    "skills/integrate-fhevm-frontend",
+    "skills/test-fhevm-contracts",
+    "skills/deploy-fhevm-dapp",
+    "skills/use-erc7984",
+    "skills/scaffold-fhevm-dapp"
+  ],
+  "pluginMetadata": {
+    "codex": ".codex-plugin/plugin.json",
+    "claude": ".claude-plugin/plugin.json",
+    "cursor": ".cursor-plugin/plugin.json",
+    "mcp": ".mcp.json"
+  },
   "agentAdapters": {
     "codex": "AGENTS.md",
-    "claudeCodeSkill": "SKILL.md",
     "claudeCodeMemory": "CLAUDE.md",
     "cursor": ".cursor/rules/fhevm-agent-skill.mdc",
     "windsurf": ".windsurf/rules/fhevm-agent-skill.md",
     "cline": ".clinerules/fhevm-agent-skill.md",
     "githubCopilot": ".github/copilot-instructions.md"
+  },
+  "assets": {
+    "examples": "assets/examples",
+    "templates": "assets/templates",
+    "logo": "assets/logo.svg",
+    "logoSquare": "assets/logo-square.svg"
   },
   "validation": {
     "smoke": "npm run agent:smoke",
@@ -26,34 +46,5 @@
       "install-adapters",
       "scaffold"
     ]
-  },
-  "generationProtocol": {
-    "scaffoldCommand": "node scripts/fhevm-agent-os.mjs scaffold <recipe> <target>",
-    "adapterInstallCommand": "node scripts/fhevm-agent-os.mjs install-adapters <target>",
-    "targetProjectRule": "Generated dApps, deployment artifacts, and local secrets belong in the target project, not in this skill repository."
-  },
-  "capabilities": [
-    "FHEVM architecture",
-    "Hardhat setup",
-    "encrypted types",
-    "FHE operations",
-    "ACL",
-    "input proofs",
-    "user decryption",
-    "public decryption",
-    "fhevmjs frontend integration",
-    "confidential contract testing",
-    "OpenZeppelin Confidential Contracts",
-    "ERC-7984",
-    "deployment",
-    "anti-pattern prevention"
-  ],
-  "examples": [
-    "examples/confidential-voting",
-    "examples/encrypted-erc7984",
-    "examples/confidential-payroll",
-    "examples/sealed-bid-auction",
-    "examples/confidential-dao",
-    "examples/confidential-marketplace"
-  ]
+  }
 }

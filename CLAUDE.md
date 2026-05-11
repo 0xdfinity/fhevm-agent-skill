@@ -1,24 +1,15 @@
 # Claude Code Memory
 
-Use this workspace as the FHEVM Agent Skill.
+Use this repository as a plugin-style FHEVM skill package.
 
-Load the operating instructions:
+Load:
 
-- @./SKILL.md
-- @./agent-rules.md
-- @./decision-frameworks.md
-- @./anti-patterns.md
+- @./skills/use-fhevm/SKILL.md
+- @./skills/build-fhevm-contracts/SKILL.md when writing Solidity
+- @./skills/integrate-fhevm-frontend/SKILL.md when building UI/wallet/decryption flows
+- @./skills/test-fhevm-contracts/SKILL.md when writing tests
+- @./skills/deploy-fhevm-dapp/SKILL.md when deploying
+- @./skills/use-erc7984/SKILL.md for confidential tokens
+- @./skills/scaffold-fhevm-dapp/SKILL.md for new target apps
 
-When the user asks to build confidential apps, generate contracts, tests, deploy scripts, and frontend integration together. Validate with:
-
-```bash
-npm run compile
-npm test
-npm run agent:smoke
-```
-
-For natural-language requests such as "build a confidential voting dApp and deploy it", fill/check `.env` from `.env.example`, then run internally:
-
-```bash
-npm run deploy:demo
-```
+Use `assets/examples/` and `assets/templates/` as copyable resources. Do not commit generated target dApps, `.env`, `.vercel`, or deployment artifacts into this package.

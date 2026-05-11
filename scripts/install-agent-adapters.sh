@@ -14,6 +14,10 @@ rsync -a \
   --exclude cache \
   --exclude types \
   --exclude fhevmTemp \
+  --include ".env.example" \
+  --exclude ".env*" \
+  --exclude .vercel \
+  --exclude deployments \
   --exclude .git \
   "$SKILL_ROOT/" "$INSTALLED_SKILL/"
 
@@ -35,13 +39,12 @@ write_file "AGENTS.md" '# AGENTS.md
 
 Use the installed FHEVM Agent Skill for any Zama FHEVM confidential app work.
 
-Read `.agent-skills/fhevm-agent-skill/SKILL.md` before coding. Apply `agent-rules.md`, `decision-frameworks.md`, and `anti-patterns.md`.
+Read `.agent-skills/fhevm-agent-skill/skills/use-fhevm/SKILL.md` before coding, then route to the relevant skill under `.agent-skills/fhevm-agent-skill/skills/`.
 '
 
 write_file "CLAUDE.md" '# Claude Code Memory
 
-Use @./.agent-skills/fhevm-agent-skill/SKILL.md for Zama FHEVM work.
-Use @./.agent-skills/fhevm-agent-skill/agent-rules.md and @./.agent-skills/fhevm-agent-skill/anti-patterns.md as guardrails.
+Use @./.agent-skills/fhevm-agent-skill/skills/use-fhevm/SKILL.md for Zama FHEVM work. Route to the relevant installed skill under @./.agent-skills/fhevm-agent-skill/skills/.
 '
 
 write_file ".cursor/rules/fhevm-agent-skill.mdc" '---
@@ -49,7 +52,7 @@ description: Use the installed FHEVM Agent Skill for Zama FHEVM confidential app
 alwaysApply: true
 ---
 
-Read `.agent-skills/fhevm-agent-skill/SKILL.md` before FHEVM work. Apply the rules and anti-pattern checks from the installed skill.
+Read `.agent-skills/fhevm-agent-skill/skills/use-fhevm/SKILL.md` before FHEVM work. Route to the relevant installed skill.
 '
 
 write_file ".windsurf/rules/fhevm-agent-skill.md" '---
@@ -57,17 +60,17 @@ trigger: model_decision
 description: Use for Zama FHEVM confidential app development, ERC-7984, fhevmjs, ACL, proofs, decryption, tests, and deployment.
 ---
 
-Read `.agent-skills/fhevm-agent-skill/SKILL.md` before FHEVM work. Apply the installed rules and anti-pattern checks.
+Read `.agent-skills/fhevm-agent-skill/skills/use-fhevm/SKILL.md` before FHEVM work. Route to the relevant installed skill.
 '
 
 write_file ".clinerules/fhevm-agent-skill.md" '# FHEVM Agent Skill
 
-For Zama FHEVM work, read `.agent-skills/fhevm-agent-skill/SKILL.md` before coding. Apply `agent-rules.md`, `decision-frameworks.md`, and `anti-patterns.md`.
+For Zama FHEVM work, read `.agent-skills/fhevm-agent-skill/skills/use-fhevm/SKILL.md`, then route to the relevant installed skill under `.agent-skills/fhevm-agent-skill/skills/`.
 '
 
 write_file ".github/copilot-instructions.md" '# FHEVM Agent Skill
 
-For Zama FHEVM confidential app work, follow `.agent-skills/fhevm-agent-skill/SKILL.md`, `agent-rules.md`, `decision-frameworks.md`, and `anti-patterns.md`.
+For Zama FHEVM confidential app work, follow `.agent-skills/fhevm-agent-skill/skills/use-fhevm/SKILL.md` and the relevant installed skill under `.agent-skills/fhevm-agent-skill/skills/`.
 '
 
 echo "FHEVM Agent Skill adapter install complete at $INSTALLED_SKILL"

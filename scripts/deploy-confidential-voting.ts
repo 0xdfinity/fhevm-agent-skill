@@ -35,14 +35,10 @@ async function main() {
   fs.mkdirSync(deploymentDir, { recursive: true });
   fs.writeFileSync(path.join(deploymentDir, "confidential-voting.json"), `${JSON.stringify(deployment, null, 2)}\n`);
 
-  const frontendDir = path.join(root, "frontend", "confidential-voting-app");
-  fs.mkdirSync(frontendDir, { recursive: true });
-  fs.writeFileSync(path.join(frontendDir, "deployment.json"), `${JSON.stringify(deployment, null, 2)}\n`);
-
   console.log(`ConfidentialVoting deployed to ${network.name}`);
   console.log(`Address: ${address}`);
   console.log(`Owner: ${deployer.address}`);
-  console.log(`Frontend deployment config: ${path.join(frontendDir, "deployment.json")}`);
+  console.log(`Deployment config: ${path.join(deploymentDir, "confidential-voting.json")}`);
 }
 
 main().catch((error) => {

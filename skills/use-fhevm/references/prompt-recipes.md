@@ -40,7 +40,7 @@ Pitfalls:
 
 Example:
 
-- `examples/confidential-voting`
+- `assets/examples/confidential-voting`
 
 If the user also asks to deploy, publish, give a Vercel link, or build end-to-end, the agent should run the hosted deployment lane itself after implementation and validation. Use `.env` for `MNEMONIC`, `INFURA_API_KEY`, and `VERCEL_TOKEN`, then return the contract address and Vercel URL.
 
@@ -79,7 +79,7 @@ Pitfalls:
 
 Example:
 
-- `examples/encrypted-erc7984`
+- `assets/examples/encrypted-erc7984`
 
 ## Recipe 3: "Build confidential payroll"
 
@@ -115,7 +115,7 @@ Pitfalls:
 
 Example:
 
-- `examples/confidential-payroll`
+- `assets/examples/confidential-payroll`
 
 ## Recipe 4: "Build a sealed-bid auction"
 
@@ -152,7 +152,7 @@ Pitfalls:
 
 Example:
 
-- `examples/sealed-bid-auction`
+- `assets/examples/sealed-bid-auction`
 
 ## Recipe 5: "Build private DAO voting"
 
@@ -181,7 +181,7 @@ Production note:
 
 Example:
 
-- `examples/confidential-dao`
+- `assets/examples/confidential-dao`
 
 ## Recipe 6: "Build a confidential marketplace"
 
@@ -212,7 +212,7 @@ Pitfalls:
 
 Example:
 
-- `examples/confidential-marketplace`
+- `assets/examples/confidential-marketplace`
 
 ## Recipe 7: "Build a confidential leaderboard"
 

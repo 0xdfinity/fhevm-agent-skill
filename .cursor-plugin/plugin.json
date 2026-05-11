@@ -1,0 +1,19 @@
+{
+  "name": "fhevm",
+  "displayName": "FHEVM",
+  "version": "1.0.0",
+  "description": "Skills for building confidential smart contracts and dApps with Zama FHEVM.",
+  "author": {
+    "name": "0xdfinity"
+  },
+  "keywords": [
+    "zama",
+    "fhevm",
+    "confidential",
+    "solidity",
+    "hardhat",
+    "erc7984"
+  ],
+  "license": "MIT",
+  "logo": "assets/logo.svg"
+}

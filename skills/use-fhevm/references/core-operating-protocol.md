@@ -1,9 +1,4 @@
----
-name: fhevm-agent-skill
-description: Build, test, deploy, and integrate Zama FHEVM confidential smart contracts and dApps. Use when an agent is asked to create or modify confidential voting, encrypted ERC-7984 tokens, private transfers, confidential payroll, sealed-bid auctions, private DAO voting, confidential marketplaces, fhevmjs/frontend integration, FHEVM Hardhat tests, deployment flows, input proofs, ACL permissions, user decryption, public decryption, or OpenZeppelin Confidential Contracts code.
----
-
-# FHEVM Agent Skill
+# FHEVM Core Operating Protocol
 
 ## Agent Identity
 

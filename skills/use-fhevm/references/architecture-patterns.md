@@ -23,10 +23,10 @@ Contract flow:
 
 Examples:
 
-- `examples/confidential-voting`
-- `examples/sealed-bid-auction`
-- `examples/confidential-marketplace`
-- `examples/confidential-dao`
+- `assets/examples/confidential-voting`
+- `assets/examples/sealed-bid-auction`
+- `assets/examples/confidential-marketplace`
+- `assets/examples/confidential-dao`
 
 ## Pattern 2: Private User State
 
@@ -48,8 +48,8 @@ Contract flow:
 
 Examples:
 
-- `examples/confidential-payroll`
-- `examples/encrypted-erc7984`
+- `assets/examples/confidential-payroll`
+- `assets/examples/encrypted-erc7984`
 
 ## Pattern 3: Confidential Token
 
@@ -75,7 +75,7 @@ Contract flow:
 
 Example:
 
-- `examples/encrypted-erc7984`
+- `assets/examples/encrypted-erc7984`
 
 ## Pattern 4: Encrypted Conditional Update
 
@@ -170,4 +170,3 @@ Use for:
 - one-step adapters
 
 Do not use transient allowance for values needed in future transactions.
-
